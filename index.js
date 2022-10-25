@@ -15,7 +15,7 @@ const target = {
     url: process.env.URL
 };
 
-cron.schedule('*/30 * * * *', () => {
+cron.schedule('*/2 * * * *', () => {
     console.log("---------------------");
     console.log("Running Cron Job");
     //      let d = new Date(Date.now()).toLocaleString();
@@ -32,4 +32,17 @@ cron.schedule('*/30 * * * *', () => {
             })
         }
     })
+})
+
+cron.schedule('* * * * *', () => {
+    console.log("---------------------");
+    console.log("Running Cron Job 2");
+    //      let d = new Date(Date.now()).toLocaleString();
+    //   console.log(`running a task every minute ${d}`);
+    fetch("http://129.0.0.8:8009/token/")
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch(function (err) {
+            console.log("Unable to fetch -", err);
+        });
 })
