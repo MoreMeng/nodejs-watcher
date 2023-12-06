@@ -1,21 +1,21 @@
 {
   "name": "@service/nodejs-watcher",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NodeJS cron check server is reachable",
   "main": "src/index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "dev": "nodemon --watch src ./src/index.js"
+    "dev": "nodemon --watch src ./src/index.js  --trace-warnings"
   },
   "author": "MoreMeng",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.3.1",
     "is-reachable": "^5.2.1",
     "line-api": "^0.2.4",
     "node-cron": "^3.0.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^3.0.2"
   }
 }
