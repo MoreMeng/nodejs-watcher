@@ -166,4 +166,20 @@ cron.schedule('*/10 * * * *', () => {
       })
     }
   })
+
+  isReachable(process.env.C9_URL).then(reachable => {
+    let d = new Date(Date.now()).toLocaleString();
+    console.log(`[${d}] ${process.env.C9_NAME}:  ✔ ${reachable}`);
+
+    if (!reachable) {
+      let notify = new LineAPI.Notify({
+        token: process.env.C9_LINE_TOKEN
+      })
+      //   let msg = `[${d}] NodeJS: 💥 ${reachable}`
+      let msg = `${process.env.C9_NAME} : 💥 ไม่ตอบสนอง`
+      notify.send({
+        message: msg
+      })
+    }
+  })
 })
